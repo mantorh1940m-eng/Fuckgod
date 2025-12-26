@@ -3,25 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>موقع تيل الذكر</title>
+    <title>موقع تيل الذكر المطوّر</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="container">
-        <h1>مجمع النقاط</h1>
+        <h1>مجمع النقاط الاحترافي</h1>
+        
         <div class="score-board">النقاط: <span id="score">0</span></div>
         
+        <div class="progress-container">
+            <div id="progress-bar"></div>
+        </div>
+        <p id="rank">الرتبة: ذاكر جديد</p>
+
         <div class="buttons-grid">
             <button onclick="addPoint('تيل بابو جاسم')">تيل بابو جاسم</button>
             <button onclick="addPoint('تيل برفيج الله')">تيل برفيج الله</button>
             <button onclick="addPoint('تيل بالله سبحانه وتعالى')">تيل بالله سبحانه وتعالى</button>
             <button onclick="addPoint('تيل بالله')">تيل بالله</button>
         </div>
+
+        <button class="reset-btn" onclick="resetPoints()">تصفير النقاط</button>
     </div>
 
     <audio id="click-sound" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
+    <audio id="level-sound" src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3"></audio>
 
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
+
