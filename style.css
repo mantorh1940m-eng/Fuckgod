@@ -105,4 +105,35 @@ button:hover { transform: scale(1.03); background: #533483; }
     50% { transform: scale(1.1); }
     100% { transform: scale(1); }
 }
+/* أضف هذه التنسيقات في نهاية الملف */
+
+#messi-container {
+    position: fixed;
+    bottom: -150px; /* مخفي في البداية */
+    right: 20px;
+    width: 200px;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1000;
+}
+
+#messi-container.show {
+    bottom: 0px; /* يظهر عند تسجيل الهدف */
+}
+
+#messi-img {
+    width: 100%;
+    filter: drop-shadow(0 0 10px gold);
+}
+
+/* حركة اهتزاز الهدف */
+.goal-shake {
+    animation: shake-screen 0.5s infinite;
+}
+
+@keyframes shake-screen {
+    0% { transform: translate(0,0); }
+    25% { transform: translate(5px, 5px); }
+    50% { transform: translate(-5px, -5px); }
+    100% { transform: translate(0,0); }
+}
 
