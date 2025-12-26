@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>موقع تيل الذكر المطوّر</title>
+    <title>موقع تيل الذكر - النسخة المرعبة</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
+    <div class="container" id="main-card">
         <h1>مجمع النقاط الاحترافي</h1>
         
         <div class="score-board">النقاط: <span id="score">0</span></div>
@@ -25,11 +25,16 @@
             <button onclick="addPoint('تيل بالله')">تيل بالله</button>
         </div>
 
-        <button class="reset-btn" onclick="resetPoints()">تصفير النقاط</button>
+        <div class="controls">
+            <button class="reset-btn" onclick="resetPoints()">تصفير النقاط</button>
+            <button id="horror-mode-btn" onclick="toggleHorrorMode()">تفعيل الوضع الغريب 💀</button>
+        </div>
     </div>
 
     <audio id="click-sound" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
     <audio id="level-sound" src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3"></audio>
+    <audio id="horror-bg" loop src="https://www.soundjay.com/ambient/sounds/creaky-door-2.mp3"></audio>
+    <audio id="scary-click" src="https://www.soundjay.com/ambient/sounds/ghost-whisper-1.mp3"></audio>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script src="script.js"></script>
