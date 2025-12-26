@@ -1,17 +1,18 @@
-
 let count = 0;
+let isHorrorMode = false;
+
 const scoreElement = document.getElementById('score');
 const progressBar = document.getElementById('progress-bar');
 const rankElement = document.getElementById('rank');
 const clickSound = document.getElementById('click-sound');
 const levelSound = document.getElementById('level-sound');
+const horrorBG = document.getElementById('horror-bg');
+const scaryClick = document.getElementById('scary-click');
 
-// تحميل النقاط عند فتح الموقع
 window.onload = function() {
-    const savedPoints = localStorage.getItem('myPoints');
-    if(savedPoints) {
-        count = parseInt(savedPoints);
-        scoreElement.innerText = count;
+    const saved = localStorage.getItem('myPoints');
+    if(saved) {
+        count = parseInt(saved);
         updateUI();
     }
 };
@@ -19,46 +20,55 @@ window.onload = function() {
 function addPoint(name) {
     count++;
     
-    // تشغيل صوت الضغطة
-    clickSound.currentTime = 0;
-    clickSound.play();
+    if (isHorrorMode) {
+        scaryClick.currentTime = 0;
+        scaryClick.play();
+    } else {
+        clickSound.currentTime = 0;
+        clickSound.play();
+    }
+
+    if (count % 10 === 0) {
+        confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+        if(!isHorrorMode) levelSound.play();
+    }
 
     updateUI();
-    
-    // كود المكتبة الخارجية: انفجار عند كل 10 نقاط
-    if (count % 10 === 0) {
-        levelSound.play(); // صوت احتفال بسيط
-        confetti({
-            particleCount: 150,
-            spread: 70,
-            origin: { y: 0.6 },
-            colors: ['#ff4d4d', '#ffcc00', '#2de000']
-        });
-    }
 }
 
 function updateUI() {
     scoreElement.innerText = count;
     localStorage.setItem('myPoints', count);
     
-    // تحديث شريط التقدم (كل 50 نقطة يكتمل)
-    let progress = (count % 50) * 2; 
+    let progress = (count % 50) * 2;
     progressBar.style.width = progress + "%";
 
-    // تحديث الرتبة
     if(count >= 50) rankElement.innerText = "الرتبة: ذاكر مداوم ✨";
     if(count >= 200) rankElement.innerText = "الرتبة: ذاكر مخلص 🌟";
-    if(count >= 500) rankElement.innerText = "الرتبة: وليّ صالح 👑";
 
-    // أنيميشن للرقم
     scoreElement.parentElement.classList.remove('pop-up');
-    void scoreElement.offsetWidth; 
+    void scoreElement.offsetWidth;
     scoreElement.parentElement.classList.add('pop-up');
 }
 
+function toggleHorrorMode() {
+    isHorrorMode = !isHorrorMode;
+    document.body.classList.toggle('horror-theme');
+    const btn = document.getElementById('horror-mode-btn');
+
+    if (isHorrorMode) {
+        horrorBG.play();
+        btn.innerText = "إيقاف الرعب 🕯️";
+    } else {
+        horrorBG.pause();
+        btn.innerText = "تفعيل الوضع الغريب 💀";
+    }
+}
+
 function resetPoints() {
-    if(confirm("هل تريد تصفير جميع النقاط؟")) {
+    if(confirm("تصفير النقاط؟")) {
         count = 0;
         updateUI();
     }
 }
+
