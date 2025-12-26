@@ -3,20 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>موقع تيل الذكر - النسخة المرعبة</title>
+    <title>موقع ميسي والذكر</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="container" id="main-card">
-        <h1>مجمع النقاط الاحترافي</h1>
-        
+        <h1>مجمع نقاط ميسي ⚽</h1>
         <div class="score-board">النقاط: <span id="score">0</span></div>
         
-        <div class="progress-container">
-            <div id="progress-bar"></div>
-        </div>
-        <p id="rank">الرتبة: ذاكر جديد</p>
+        <div class="progress-container"><div id="progress-bar"></div></div>
+        <p id="rank">أهداف ميسي: <span id="messi-goals">0</span></p>
 
         <div class="buttons-grid">
             <button onclick="addPoint('تيل بابو جاسم')">تيل بابو جاسم</button>
@@ -26,15 +23,17 @@
         </div>
 
         <div class="controls">
-            <button class="reset-btn" onclick="resetPoints()">تصفير النقاط</button>
-            <button id="horror-mode-btn" onclick="toggleHorrorMode()">تفعيل الوضع الغريب 💀</button>
+            <button id="horror-mode-btn" onclick="toggleHorrorMode()">الوضع الغريب 💀</button>
         </div>
     </div>
 
+    <div id="messi-container">
+        <img id="messi-img" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXp6eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/m8f0uJ97QWF9XNqS5M/giphy.gif" alt="Messi">
+    </div>
+
     <audio id="click-sound" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
-    <audio id="level-sound" src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3"></audio>
+    <audio id="goal-sound" src="https://www.myinstants.com/media/sounds/shouting-goal.mp3"></audio>
     <audio id="horror-bg" loop src="https://www.soundjay.com/ambient/sounds/creaky-door-2.mp3"></audio>
-    <audio id="scary-click" src="https://www.soundjay.com/ambient/sounds/ghost-whisper-1.mp3"></audio>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script src="script.js"></script>
